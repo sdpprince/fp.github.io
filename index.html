@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+			body{
+				background-image: url(ai.jpg);
+				background-size: contain;
+			}
+			#timeData1,#timeData2,#timeData3,#timeData4{
+				padding: 20px;
+				margin: auto;
+				border: 1px #ccc solid;
+				width: 100vw;
+				text-align: center;
+			}
+			#timeData1{
+				box-shadow:inset 0px -5px 21px -6px black;
+				font-size: 5rem;
+			}
+			#timeData2{
+				box-shadow:inset 0px -5px 21px -6px black;
+				font-size: 4rem;
+			}
+			#timeData3{
+				box-shadow:inset 0px -5px 21px -6px black;
+				font-size: 3rem;
+			}
+			#timeData4{
+				color: #3d3a48;
+				font-size: 6rem;
+			}
+			#timeData1:hover,#timeData2:hover,#timeData3:hover{
+				background-color: pink;
+				opacity: .5;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 id="timeData4">【扶~鹏】</h1>
+		<h1 id="timeData1"></h1>
+		<h2 id="timeData2"></h2>
+		<h3 id="timeData3"></h3>
+		
+		
+		<script>
+			function nowTime(){
+				let nowTime = new Date()
+				let oldTime = new Date('2022-05-02')
+				oldTime.setHours(17)
+				oldTime.setMinutes(00)
+				oldTime.setSeconds(00)
+				
+				let total = nowTime-oldTime
+				console.log(total);
+				let day = parseInt(total/1000/60/60/24)
+				let hour = parseInt(total/1000/60/60)
+				let min = parseInt(total/1000/60)
+				let sec = parseInt(total/1000)
+				
+				if(hour>=24){
+					// day = parseInt(hour / 24)
+					// hour = nowTime.getHours()
+					hour = hour - day * 24
+				}
+				if(min>59){
+					min = min - hour * 60
+				}
+				if(sec>59){
+					// sec = sec - min * 60
+				}
+				
+				// day = day > 10?day:'0'+ day
+				// min = min > 10?min:'0'+min
+				// sec = sec > 10?sec:"0"+sec
+				
+				// document.querySelector('#timeData').innerHTML = day+'天'+hour+'小时'+min+'分钟'+sec+'秒'
+				return {day,hour,min,sec}
+			}
+			
+			
+			setInterval(()=>{
+				let {day,hour,min,sec} = nowTime()
+				document.querySelector('#timeData1').innerHTML = '相识相爱：' + day +' 天 '+ hour + ' 小时 '
+				document.querySelector('#timeData2').innerHTML = '相识相爱：' + min +' 分钟 '
+				document.querySelector('#timeData3').innerHTML = '相识相爱：' + sec +' 秒'
+			},1000)
+		</script>
+	</body>
+</html>
