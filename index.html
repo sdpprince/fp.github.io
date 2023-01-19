@@ -31,6 +31,12 @@
 				box-shadow:inset 0px -5px 21px -6px black;
 				font-size: 3rem;
 			}
+			.endTime{
+				position: fixed;
+				bottom: 20vh;
+				box-shadow:inset 0px -5px 21px -6px black;
+				font-size: 3rem;
+			}
 			#timeData4{
 				color: #3d3a48;
 				font-size: 6rem;
@@ -46,11 +52,16 @@
 		<h1 id="timeData1"></h1>
 		<h2 id="timeData2"></h2>
 		<h3 id="timeData3"></h3>
+		<h3 class="endTime">相爱于2022年5月2日-17时~结束于2023年1月18-22时</h3>
 		
 		
 		<script>
 			function nowTime(){
-				let nowTime = new Date()
+				let nowTime = new Date('2023-01-18')
+				nowTime.setHours(22)
+				nowTime.setMinutes(00)
+				nowTime.setSeconds(00)
+				
 				let oldTime = new Date('2022-05-02')
 				oldTime.setHours(17)
 				oldTime.setMinutes(00)
@@ -84,12 +95,12 @@
 			}
 			
 			
-			setInterval(()=>{
+			// setInterval(()=>{
 				let {day,hour,min,sec} = nowTime()
 				document.querySelector('#timeData1').innerHTML = '相识相爱：' + day +' 天 '+ hour + ' 小时 '
 				document.querySelector('#timeData2').innerHTML = '相识相爱：' + min +' 分钟 '
 				document.querySelector('#timeData3').innerHTML = '相识相爱：' + sec +' 秒'
-			},1000)
+			// },1000)
 		</script>
 	</body>
 </html>
